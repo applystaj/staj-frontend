@@ -7,6 +7,7 @@ const products = [
     category: "Electronics",
     image: "https://via.placeholder.com/150",
     stock: 20,
+    rating: 4.5,
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ const products = [
     category: "Electronics",
     image: "https://via.placeholder.com/150",
     stock: 15,
+    rating: 4.7,
   },
   {
     id: 3,
@@ -25,6 +27,7 @@ const products = [
     category: "Footwear",
     image: "https://via.placeholder.com/150",
     stock: 50,
+    rating: 4.2,
   },
   {
     id: 4,
@@ -34,6 +37,7 @@ const products = [
     category: "Accessories",
     image: "https://via.placeholder.com/150",
     stock: 30,
+    rating: 4.0,
   },
   {
     id: 5,
@@ -43,5 +47,8 @@ const products = [
     category: "Electronics",
     image: "https://via.placeholder.com/150",
     stock: 10,
+    rating: 4.8,
   },
 ];
+
+export default products;

@@ -1,7 +1,12 @@
 import React from "react";
+import ProductCard from "../../components/product-card";
 
 function Home() {
-  return <div>Home Page</div>;
+  return (
+    <div>
+      <ProductCard />
+    </div>
+  );
 }
 
 export default Home;
