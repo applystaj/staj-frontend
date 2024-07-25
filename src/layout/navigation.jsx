@@ -1,67 +1,60 @@
-import { useState } from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { NavLink } from "react-router-dom";
-import { navbarElements } from "../dummy-data/navbarElemenets";
+import React, { useState } from "react";
 
-function Navigation() {
-  const [active, setActive] = useState();
-  const [navbarElement, setNavbarElement] = useState(navbarElements);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
+export const Navigation = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState("All Categories");
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleItemClick = (item) => {
+    setSelectedItem(item);
+    setIsOpen(false);
   };
 
   return (
-    <div className="flex flex-row justify-center border-b-2 bg-slate-50 fixed top-0 z-10 py-2 w-full ">
-      <div className="flex flex-col justify-center  sm:w-full">
-        <div className="flex flex-row justify-around gap-5 sm:hidden">
-          {navbarElement.map((element, index) => {
-            return (
-              <NavLink to={`${element.path}`} key={index}>
-                <div
-                  key={index}
-                  className={`${responsiveClass} ${hover} m-2 p-2 text-lg  ${
-                    element.path === "/propose"
-                      ? "border-2 border-black border-dotted  /40"
-                      : "border-2 border-transparent"
-                  } ${active === index ? "  /80 rounded-lg p-2" : ""}`}
-                  onClick={() => setActive(index)}
-                >
-                  {element.name}
-                </div>
-              </NavLink>
-            );
-          })}
-        </div>
-        <span
-          className="hover:shadow-md hover:shadow-white self-center sm:self-start sm:px-5 sm:py-3 hidden sm:flex sm:gap-2  sm:font-bold"
-          onClick={toggleSidebar}
-        >
-          <GiHamburgerMenu color="#59cae8" size="30px" /> Menü
-        </span>
-        <div className="hidden sm:block   z-10 w-full h-auto">
-          {isSidebarOpen &&
-            navbarElement.map((menu, index) => (
-              <NavLink
-                key={index}
-                to={`${menu.path}`}
-                onClick={() => setIsSidebarOpen(false)}
+    <div className="h-16 bg-gray-200 flex items-center justify-center">
+      <div className="flex flex-row items-center space-x-4">
+        <div className="relative inline-block">
+          <button
+            onClick={toggleDropdown}
+            className="bg-gray-100 border border-gray-300 p-2 cursor-pointer"
+          >
+            {selectedItem} <span>{isOpen ? "▲" : "▼"}</span>
+          </button>
+          {isOpen && (
+            <ul className="absolute bg-white border border-gray-300 list-none p-0 m-0 w-full z-20">
+              <li
+                onClick={() => handleItemClick("Man")}
+                className="p-2 cursor-pointer hover:bg-gray-100"
               >
-                <div
-                  key={index}
-                  className="flex m-2 p-2 cursor-pointer text-white"
-                >
-                  {menu.name}
-                </div>
-              </NavLink>
-            ))}
+                Man
+              </li>
+              <li
+                onClick={() => handleItemClick("Women")}
+                className="p-2 cursor-pointer hover:bg-gray-100"
+              >
+                Women
+              </li>
+              <li
+                onClick={() => handleItemClick("Kids")}
+                className="p-2 cursor-pointer hover:bg-gray-100"
+              >
+                Kids
+              </li>
+            </ul>
+          )}
         </div>
+        <button className="mx-2">Fashion</button>
+        <button className="mx-2">SuperMarket</button>
+        <button className="mx-2">Electronics</button>
+        <button className="mx-2">Fitness and Sport</button>
+        <button className="mx-2">Clothing</button>
+        <button className="mx-2">Furnitures</button>
       </div>
     </div>
   );
-}
-
-const responsiveClass = "md:text-xs sm:text-sm lg:text-md gap-2 ";
-const hover = " /60 rounded-lg";
+};
 
 export default Navigation;
