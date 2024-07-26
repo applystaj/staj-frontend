@@ -1,14 +1,17 @@
 import React from "react";
+import ProductCard from "../../components/product-card";
+import Brand from "../../components/brand";
 import ShowCase from "../../sector/showcase";
 import Header from "../../layout/index";
 
 function Home() {
   return (
     <div>
-      <ShowCase></ShowCase>
+      <Header />
+      <ShowCase />
+      <Brand />
+      <ProductCard />
     </div>
-
-
   );
 }
 
