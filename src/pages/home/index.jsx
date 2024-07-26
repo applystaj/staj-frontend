@@ -8,6 +8,8 @@ function Home() {
   return (
     <div>
       <Header />
+      <Slider />
+      <BoxContainer />
       <ShowCase />
       <Brand />
       <ProductCard />
