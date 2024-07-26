@@ -3,7 +3,7 @@ import { Layout } from "../layout";
 import Home from "../pages/home";
 import SignIn from "../pages/signin";
 import SignUp from "../pages/signup";
-import Cart from "../pages/cart";
+import ProductDetail from "../pages/productdetail";
 
 const routes = createBrowserRouter([
   {
@@ -23,8 +23,8 @@ const routes = createBrowserRouter([
         element: <SignUp />,
       },
       {
-        path: "/cart",
-        element: <Cart/>,
+        path: "/productdetail",
+        element: <ProductDetail />,
       },
     ],
   },
